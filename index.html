@@ -11,6 +11,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/bg_animation.css">
     <title>Moonshine Studio lbl.</title>
 </head>
 
@@ -24,54 +25,37 @@
     </div>
 
     <section id="principal">
-        <div class="bg"></div>
+        <section>
+            <div class="bg">
+                <div id="trianglesContainer"></div>
+            </div>
+        </section>
     </section>
 
-    <footer>
-        <p class="p_footer" style="position: relative; bottom:0;line-height: 8px;">℗2022 Moonshine Studio lbl. - Pordenone PN, 33170, Italy</p>
+    <!--
+    <div class="center" id="desktopalbum">
+        <div class="canvas_"></div>
+        <div class="canvas_"></div>
+        <div class="canvas_"></div>
+        <div class="canvas_"></div>
+        <div class="canvas_"></div>
+        <div class="canvas_"></div>
+        <div class="canvas_"></div>
+        <div class="canvas_"></div>
+        <div class="canvas_"></div>
+        <div class="canvas_"></div>
+        <div class="canvas_"></div>
+        <div class="canvas_"></div>
+        <div class="canvas_"></div>
+    </div>
+    -->
+
+    <footer id="footer">
+        <p class="p_footer" id="footer_content" style="position: relative; bottom:0;line-height: 8px;">℗2022 Moonshine Studio lbl. - Pordenone PN, 33170, Italy</p>
     </footer>
 
-    <script type="text/javascript">
-        var loading = true;
-        var tag = document.getElementById("frase_a_caso");
-
-
-        document.onreadystatechange = function() {
-            if (document.readyState !== "complete") {
-                document.querySelector("body").style.visibility = "hidden";
-                document.querySelector("#loader").style.visibility = "visible";
-            } else {
-                document.querySelector("#loader").style.display = "none";
-                document.querySelector("body").style.visibility = "visible";
-            }
-        };
-
-        var dots = window.setInterval(function() {
-            if (loading) {
-                var wait = document.getElementById("attesa");
-                if (wait.innerHTML.length > 23)
-                    wait.innerHTML = "Caricamento in corso ";
-                else
-                    wait.innerHTML += ".";
-            } else {
-                //LOADED
-            }
-        }, 300);
-
-        function frase_a_caso() {
-            var myArray = [
-                "Moonshine Studio è stata inaugurata da Alberto Franzin e Michele Chiaradia nel 2020",
-                "La musica può rendere gli uomini liberi. cit. Bob Marley",
-                "La musica è per l'anima quello che la ginnastica è per il corpo. cit. Platone",
-                "Dove le parole non arrivano... la musica parla. cit. Beethoven",
-                "Sei un artista? contattaci!",
-                "Sei un Artista?? Se hai talento perchè non provare a pubblicare i tuoi risultati?"
-            ];
-            tag.innerHTML = myArray[Math.floor(Math.random() * myArray.length)];
-        }
-        frase_a_caso()
-    </script>
-
+    <script type="text/javascript" src="./js/index_loading.js"></script>
+    <script type="text/javascript" src="./js/bg_animation.js"></script>
 </body>
 
 </html>
