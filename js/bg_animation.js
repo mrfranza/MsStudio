@@ -1,9 +1,9 @@
 // Parameters 
 var
     axe = "X", // values can be "X" or "Y"
-    numberOfSquare = 30, // How many square on the axe
-    greyMinimum = 210, // Between 0 and 254
-    greyMaximum = 245, // Between 1 and 255
+    numberOfSquare = 15, // How many square on the axe
+    greyMinimum = 190, // Between 0 and 254
+    greyMaximum = 255, // Between 1 and 255
     animMin = 2, // Animation durations (in seconds)
     animMax = 8;
 

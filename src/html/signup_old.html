@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Moonshine Studio SignupForm" />
+    <meta name="keywords" content="HTML, CSS, JavaScript, Music, Studio, Production, Mastering, Pubblications" />
+    <meta name="author" content="MrFranza, Alberto Franzin, Michele Chiaradia" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/0f6a6ff0f9.js" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="../../css/index.css" />
+    <link rel="stylesheet" href="../../css/signup.css" />
+    <title>Moonshine Studio lbl.</title>
+</head>
+
+<body>
+    <div class="back"></div>
+    <div class="registration-form">
+        <header>
+            <h1>Sign Up</h1>
+        </header>
+        <form>
+            <div class="input-section email-section">
+                <input class="email" id="email" type="email" placeholder="ENTER YOUR E-MAIL HERE"
+                    autocomplete="email" />
+                <div class="animated-button">
+                    <span class="icon-paper-plane"><i class="fa fa-envelope-o"></i></span><span
+                        class="next-button email"><i class="fa fa-arrow-up"></i></span>
+                </div>
+            </div>
+            <div class="input-section password-section folded">
+                <input class="password" id="password" type="password" placeholder="ENTER YOUR PASSWORD HERE"
+                    autocomplete="new-password" />
+                <div class="animated-button">
+                    <span class="icon-lock"><i class="fa fa-lock"></i></span><span class="next-button password"><i
+                            class="fa fa-arrow-up"></i></span>
+                </div>
+            </div>
+            <div class="input-section repeat-password-section folded">
+                <input class="repeat-password" id="passwordrepeated" type="password"
+                    placeholder="REPEAT YOUR PASSWORD HERE" />
+                <div class="animated-button" onclick="Register()">
+                    <span class="icon-repeat-lock"><i class="fa fa-lock"></i></span><span
+                        class="next-button repeat-password"><i class="fa fa-paper-plane"></i></span>
+                </div>
+            </div>
+            <div class="success">
+                <p id="result_signup">
+                <div id="wait"></div>
+                </p>
+            </div>
+        </form>
+    </div>
+
+    <script type="text/javascript" src="../../js/signup_anim.js"></script>
+
+</body>
+
+<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
+<script src="../../js/loadingsignup.js"></script>
+<script src="../../js/login_old.js"></script>
+
+</html>

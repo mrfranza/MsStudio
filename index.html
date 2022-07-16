@@ -2,16 +2,17 @@
 <html lang="it">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Moonshine Studio Website">
-    <meta name="keywords" content="HTML, CSS, JavaScript, Music, Studio, Production, Mastering, Pubblications">
-    <meta name="author" content="MrFranza, Alberto Franzin, Michele Chiaradia">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Moonshine Studio Website" />
+    <meta name="keywords" content="HTML, CSS, JavaScript, Music, Studio, Production, Mastering, Pubblications" />
+    <meta name="author" content="MrFranza, Alberto Franzin, Michele Chiaradia" />
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script type="text/javascript" src="./js/index_loading.js"></script>
 
-    <link rel="stylesheet" href="css/index.css">
-    <link rel="stylesheet" href="css/bg_animation.css">
+    <link rel="stylesheet" href="css/index.css" />
+    <link rel="stylesheet" href="css/bg_animation.css" />
     <title>Moonshine Studio lbl.</title>
 </head>
 
@@ -32,30 +33,33 @@
         </section>
     </section>
 
-    <!--
-    <div class="center" id="desktopalbum">
-        <div class="canvas_"></div>
-        <div class="canvas_"></div>
-        <div class="canvas_"></div>
-        <div class="canvas_"></div>
-        <div class="canvas_"></div>
-        <div class="canvas_"></div>
-        <div class="canvas_"></div>
-        <div class="canvas_"></div>
-        <div class="canvas_"></div>
-        <div class="canvas_"></div>
-        <div class="canvas_"></div>
-        <div class="canvas_"></div>
-        <div class="canvas_"></div>
+    <div class="account_" id="account">
+        <iframe src="./src/html/signup.html" width="400px" frameborder="0" style="border-radius:15px;"></iframe>
     </div>
-    -->
+
+
+    <div class="center" id="desktopalbum">
+        <h1>Moonshine Studio</h1>
+        <h1 id="year_"></h1>
+    </div>
 
     <footer id="footer">
-        <p class="p_footer" id="footer_content" style="position: relative; bottom:0;line-height: 8px;">℗2022 Moonshine Studio lbl. - Pordenone PN, 33170, Italy</p>
+        <p class="p_footer" id="footer_content" style="position: relative; bottom: 0; line-height: 8px">
+            ℗2022 Moonshine Studio lbl. - Pordenone PN, 33170, Italy
+        </p>
     </footer>
-
-    <script type="text/javascript" src="./js/index_loading.js"></script>
     <script type="text/javascript" src="./js/bg_animation.js"></script>
+    <script type="text/javascript" src="./js/year.js"></script>
+
+    <!--
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.8.3/firebase-app.js"; import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.8.3/firebase-analytics.js"; import { getAuth } from "https://www.gstatic.com/firebasejs/9.8.3/firebase-auth.js";
+        import { getDatabase } from "https://www.gstatic.com/firebasejs/9.8.3/firebase-database.js"; const firebaseConfig = { apiKey: "AIzaSyAnG5XLuI8fRRsOdo0FJyoelT5F-gC2HbQ", authDomain: "moonshinestudiomusic.firebaseapp.com", projectId: "moonshinestudiomusic",
+        storageBucket: "moonshinestudiomusic.appspot.com", messagingSenderId: "116720148312", appId: "1:116720148312:web:c6f098393c9c04e2690f2d", measurementId: "G-EGDHF02KJ3", }; const app = initializeApp(firebaseConfig); const analytics = getAnalytics(app);
+        const auth = getAuth(); const database = getDatabase();
+    </script>
+    <script src="./js/login.js"></script>
+    -->
 </body>
 
 </html>

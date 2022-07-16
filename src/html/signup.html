@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Moonshine Studio SignupForm" />
+    <meta name="keywords" content="HTML, CSS, JavaScript, Music, Studio, Production, Mastering, Pubblications" />
+    <meta name="author" content="MrFranza, Alberto Franzin, Michele Chiaradia" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/0f6a6ff0f9.js" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="../../css/index.css" />
+    <link rel="stylesheet" href="../../css/signup.css" />
+    <title>Moonshine Studio lbl.</title>
+</head>
+
+<body>
+    <div class="back"></div>
+    <div class="registration-form">
+        <header>
+            <h1>Sign Up</h1>
+        </header>
+        <form onsubmit="return false">
+            <div class="input-section email-section">
+                <input class="email" id="email" type="email" placeholder="ENTER YOUR E-MAIL HERE"
+                    autocomplete="email" />
+                <div class="animated-button">
+                    <span class="icon-paper-plane"><i class="fa fa-envelope-o"></i></span><span
+                        class="next-button email"><i class="fa fa-arrow-up"></i></span>
+                </div>
+            </div>
+            <div class="input-section password-section folded">
+                <input class="password" id="password" type="password" placeholder="ENTER YOUR PASSWORD HERE"
+                    autocomplete="new-password" />
+                <div class="animated-button">
+                    <span class="icon-lock"><i class="fa fa-lock"></i></span><span class="next-button password"><i
+                            class="fa fa-arrow-up"></i></span>
+                </div>
+            </div>
+            <div class="input-section repeat-password-section folded">
+                <input class="repeat-password" id="passwordrepeated" type="password"
+                    placeholder="REPEAT YOUR PASSWORD HERE" />
+                <button style="cursor: pointer; outline: inherit;border: none;" onsubmit="return false"
+                    class="animated-button" id="submit">
+                    <span class="icon-repeat-lock"><i class="fa fa-lock"></i></span><span
+                        class="next-button repeat-password"><i class="fa fa-paper-plane"></i></span>
+                </button>
+            </div>
+            <div class="success">
+                <p id="result_signup">
+                <div id="wait"></div>
+                </p>
+            </div>
+        </form>
+    </div>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.8.4/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.8.4/firebase-analytics.js";
+        import { getDatabase, ref, set, child, get } from "https://www.gstatic.com/firebasejs/9.8.4/firebase-database.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyAnG5XLuI8fRRsOdo0FJyoelT5F-gC2HbQ",
+            authDomain: "moonshinestudiomusic.firebaseapp.com",
+            databaseURL: "https://moonshinestudiomusic-default-rtdb.europe-west1.firebasedatabase.app",
+            projectId: "moonshinestudiomusic",
+            storageBucket: "moonshinestudiomusic.appspot.com",
+            messagingSenderId: "116720148312",
+            appId: "1:116720148312:web:c6f098393c9c04e2690f2d",
+            measurementId: "G-EGDHF02KJ3"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+        const db = getDatabase();
+
+        const email = document.getElementById("email");
+        const password = document.getElementById("password");
+        const repeatedpassword = document.getElementById("passwordrepeated");
+        const submit = document.getElementById('submit');
+
+        function Validation() {
+            let email = /^[^@]+@\w+(\.\w+)+\w$/;
+
+            if (!email.test(email.value)) {
+                document.getElementById('result_signup').innerHTML = "INVALID EMAIL";
+                return false;
+            }
+
+            if (password === repeatedpassword) {
+                return true;
+            } else {
+                wait.remove();
+                document.getElementById('result_signup').innerHTML = "PASSWORD NOT MATCHED";
+                return false;
+            }
+
+            return true;
+        }
+
+        function RegisterUser() {
+            if (!Validation()) {
+                return;
+            };
+            const dbRef = ref(db);
+
+            get(child(dbRef, "UserList/" + email.value)).then((snapshot) => {
+                if (snapshot.exist()) {
+                    document.getElementById('result_signup').innerHTML = "EMAIL ALREADY TAKEN!";
+                } else {
+                    set(ref(db, "UserList/" + email.value),
+                        {
+                            email: email.value,
+                            password: password.value
+                        }).then(() => {
+                            document.getElementById('result_signup').innerHTML = "ACCOUNT CREATED!";
+                        })
+                        .catch((error) => {
+                            document.getElementById('result_signup').innerHTML = "ERROR: " + error;
+                        })
+                }
+            });
+        }
+
+        submit.addEventListener('click', RegisterUser);
+
+    </script>
+    <script type="text/javascript" src="../../js/signup_anim.js"></script>
+
+</body>
+<script src="../../js/loadingsignup.js"></script>
+
+</html>
