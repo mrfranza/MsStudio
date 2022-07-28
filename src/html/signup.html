@@ -22,7 +22,8 @@
         <header>
             <h1>Sign Up</h1>
         </header>
-        <form onsubmit="return false">
+
+        <form id="submitform">
             <div class="input-section email-section">
                 <input class="email" id="email" type="email" placeholder="ENTER YOUR E-MAIL HERE"
                     autocomplete="email" />
@@ -56,6 +57,12 @@
         </form>
     </div>
 
+    <script>
+        var form = document.getElementById("submitform");
+        function handleForm(event) { event.preventDefault(); }
+        form.addEventListener('submit', handleForm);
+    </script>
+
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.8.4/firebase-app.js";
         import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.8.4/firebase-analytics.js";
@@ -82,14 +89,14 @@
         const submit = document.getElementById('submit');
 
         function Validation() {
-            let email = /^[^@]+@\w+(\.\w+)+\w$/;
+            let re = /\S+@\S+\.\S+/;
 
-            if (!email.test(email.value)) {
+            if (!re.test(email.value)) {
                 document.getElementById('result_signup').innerHTML = "INVALID EMAIL";
                 return false;
             }
 
-            if (password === repeatedpassword) {
+            if (password.value === repeatedpassword.value) {
                 return true;
             } else {
                 wait.remove();
@@ -106,11 +113,11 @@
             };
             const dbRef = ref(db);
 
-            get(child(dbRef, "UserList/" + email.value)).then((snapshot) => {
+            get(child(dbRef, 'UserList/' + email.value)).then((snapshot) => {
                 if (snapshot.exist()) {
                     document.getElementById('result_signup').innerHTML = "EMAIL ALREADY TAKEN!";
                 } else {
-                    set(ref(db, "UserList/" + email.value),
+                    set(ref(db, 'UserList/' + email.value),
                         {
                             email: email.value,
                             password: password.value
